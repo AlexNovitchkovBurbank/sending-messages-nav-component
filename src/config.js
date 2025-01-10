@@ -1,3 +1,0 @@
-//export const SignInUrl = "https://<client_id>.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=10o8dl4j7i6scmsntgvjg1oe6i&scope=openid+email+aws.cognito.signin.user.admin&redirect_uri=https%3A%2F%2Falexserverlesssystem-codedeployment-main-dev.s3.us-west-2.amazonaws.com%2Fmain%2Findex.html"
-export const SignInUrl = "https://2345678.auth.us-west-2.amazoncognito.com/login?client_id=26k1fm2mipg8a7uvaigpnap1ju&response_type=code&scope=email+openid&redirect_uri=https://d2w5dvgv7cu0fp.cloudfront.net/main/index.html";
-export const SignOutUrl = "https://2345678.auth.us-west-2.amazoncognito.com/logout?client_id=26k1fm2mipg8a7uvaigpnap1ju&logout_uri=https://d2w5dvgv7cu0fp.cloudfront.net/main/index.html";

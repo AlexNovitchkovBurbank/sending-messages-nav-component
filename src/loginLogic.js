@@ -1,17 +1,22 @@
 import axios from "axios";
 import base64 from "base-64";
+import qs from "qs";
+import { cloudfront_domain_id, cognito_app_client_id, cognito_app_client_secret, cognito_domain } from "../env.env";
 
-export default function CodeToToken() {
+function CodeToToken() {
+  console.log(3);
   const parameters = new URLSearchParams(location.search);
-  if (!parameters.has("code"))
-    throw Error("Cannot get token without code to authenticate");
+  if (!parameters.has("code")) {
+    console.log("Cannot get token without code to authenticate");
+    return false;
+  }
 
   const code = parameters.get("code");
 
-  let url = "https://2345678.auth.us-west-2.amazoncognito.com/oauth2/token";
-  const client_id = "26k1fm2mipg8a7uvaigpnap1ju";
-  const redirect_uri = "https://d2w5dvgv7cu0fp.cloudfront.net/main/index.html";
-  const client_secret = "195uvsglqutav19t2vieeee5dlssiiofnh01hcfbd19enq7gi315";
+  let url = `https://${cognito_domain}.auth.us-west-2.amazoncognito.com/oauth2/token`;
+  const client_id = cognito_app_client_id;
+  const redirect_uri = `https://${cloudfront_domain_id}.cloudfront.net/main/index.html`;
+  const client_secret = cognito_app_client_secret;
 
   const data = qs.stringify({ // query string stringify different than JSON
     grant_type: "authorization_code",
@@ -33,11 +38,11 @@ export default function CodeToToken() {
     "Content-Type": "application/x-www-form-urlencoded",
   };
 
-  axios.post(
+  const promiseResponse = axios.post(
     url,
     data,
     {headers}
-  ).then((response) => console.log(response.data)).catch((err) => console.error("Error: " + err));
+  );
 
   // fetch(url, {
   //   method: "POST",
@@ -53,4 +58,8 @@ export default function CodeToToken() {
   //   .catch((error) => {
   //     console.error("Error:", error);
   //   });
+
+  return promiseResponse;
 }
+
+export default CodeToToken;
