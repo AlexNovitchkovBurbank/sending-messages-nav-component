@@ -1,19 +1,20 @@
 import { api_gateway_id } from "../env.env";
 import axios from "axios";
 
-export default function SendMessage(props) {
+export default function SendMessage(id_token) {
   const date = new Date();
 
   const serviceData = {
     timestamp: date.toISOString(),
   };
 
+  console.log(id_token);
   const url = `https://${api_gateway_id}.execute-api.us-west-2.amazonaws.com/np/metrics/2`;
-  const token = "b"; //props.access_token;
+  const token = id_token;
   axios
     .put(url, serviceData, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     })

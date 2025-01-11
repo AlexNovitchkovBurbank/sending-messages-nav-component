@@ -20,7 +20,7 @@ export default function Root(props) {
 
   if (response !== null && typeof response === 'object')
     if (Object.hasOwn(response, "access_token"))
-      SendMessage(response.access_token);
+      SendMessage(response.id_token);
       console.log(65);
 
   return (
