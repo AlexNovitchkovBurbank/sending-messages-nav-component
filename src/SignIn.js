@@ -1,4 +1,4 @@
-import { cloudfront_domain_id, cognito_domain, cognito_app_client_id } from "../env.env";
+import { cloudfront_domain_id, cognito_domain, cognito_app_client_id } from "../env";
 
 export function SignIn() {
     const redirectUri = `https://${cloudfront_domain_id}.cloudfront.net/main/index.html`;

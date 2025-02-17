@@ -1,7 +1,7 @@
 import axios from "axios";
 import base64 from "base-64";
 import qs from "qs";
-import { cloudfront_domain_id, cognito_app_client_id, cognito_app_client_secret, cognito_domain } from "../env.env";
+import { cloudfront_domain_id, cognito_app_client_id, cognito_app_client_secret, cognito_domain } from "../env";
 
 function CodeToToken() {
   console.log(3);

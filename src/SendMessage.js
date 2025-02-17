@@ -1,4 +1,4 @@
-import { api_gateway_id } from "../env.env";
+import { api_gateway_id } from "../env";
 import axios from "axios";
 
 export default function SendMessage(id_token) {
@@ -9,6 +9,7 @@ export default function SendMessage(id_token) {
   };
 
   console.log(id_token);
+  console.log("api_gateway_id: ", api_gateway_id)
   const url = `https://${api_gateway_id}.execute-api.us-west-2.amazonaws.com/np/metrics/2`;
   const token = id_token;
   axios
